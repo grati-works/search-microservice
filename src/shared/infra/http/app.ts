@@ -12,7 +12,7 @@ const sonicConfig = {
   port: 1491,
   auth: 'grati_search_microservice',
 };
-console.log(sonicConfig);
+
 const sonicChannelIngest = new Ingest(sonicConfig);
 const sonicChannelSearch = new Search(sonicConfig);
 
@@ -29,7 +29,7 @@ app.post('/user/:organization_id/:id', async (request: Request, response: Respon
   const { name, username, responsibility, about, skills, graduations } = request.body;
   const { organization_id, id } = request.params;
 
-  await sonicChannelIngest.push('users', organization_id, `user:${id}`, `${name} ${username} ${responsibility} ${about} ${skills} ${graduations}`, {
+  await sonicChannelIngest.push('users', organization_id, `user:${id}`, `${name}, ${username}, ${responsibility}, ${about}, ${skills}, ${graduations}`, {
     lang: 'por',
   });
 
