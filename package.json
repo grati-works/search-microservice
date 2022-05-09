@@ -1,13 +1,12 @@
 {
+  "name": "@grati/search-microservice",
   "main": "./src/shared/infra/http/server.ts",
   "scripts": {
     "install:sonic": "docker pull valeriansaliou/sonic:v1.3.2",
-    "start:sonic": "docker run -p 1491:1491 -v ~/Desktop/Grati/repos/search-microservice/src/sonic/config.cfg:/etc/sonic.cfg -v ~/Desktop/Grati/repos/search-microservice/src/sonic/store/:/var/lib/sonic/store/ -d valeriansaliou/sonic:v1.3.2",
-    "start:server": "ts-node .",
-    "start:server:dev": "ts-node-dev .",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "start": "yarn start:sonic && yarn start:server",
-    "start:dev": "yarn start:sonic && yarn start:server:dev"
+    "start": "node dist/shared/infra/http/server.js",
+    "start:sonic": "docker run -p 1491:1491 -v ~/Desktop/Grati/repos/search-microservice/src/sonic/config.cfg:/etc/sonic.cfg -v ~/Desktop/Grati/repos/search-microservice/src/sonic/store/:/var/lib/sonic/store/ -d valeriansaliou/sonic:v1.3.2",
+    "start:dev": "ts-node-dev ."
   },
   "license": "ISC",
   "dependencies": {
